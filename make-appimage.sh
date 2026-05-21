@@ -15,7 +15,7 @@ export DEPLOY_GTK=1
 export GTK_DIR=gtk-3.0
 
 # Deploy dependencies
-quick-sharun /usr/bin/freac
+quick-sharun /usr/bin/freac /usr/bin/cd-paranoia
 
 # Additional changes can be done in between here
 
