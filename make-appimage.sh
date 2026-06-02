@@ -10,6 +10,7 @@ export ADD_HOOKS="self-updater.hook:wayland-is-broken.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
 export ICON=/usr/share/icons/hicolor/128x128/apps/org.freac.freac.png
 export DESKTOP=/usr/share/applications/org.freac.freac.desktop
+export APPNAME=freac
 export STARTUPWMCLASS="fre:ac"
 export DEPLOY_GTK=1
 export GTK_DIR=gtk-3.0
