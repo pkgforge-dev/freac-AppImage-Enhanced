@@ -37,7 +37,7 @@ REPO="https://github.com/enzo1982/smooth"
 git clone --depth 1 "$REPO" ./smooth
 
 cd ./smooth
-make -j$(nproc) config="systemlibbz2,\
+make -j$(nproc) prefix=/usr config="systemlibbz2,\
     systemlibcpuid,\
     systemlibcurl,\
     systemlibfribidi,\
@@ -56,8 +56,8 @@ REPO="https://github.com/enzo1982/BoCA"
 git clone --depth 1 "$REPO" ./BoCA
 
 cd ./BoCA
-make -j$(nproc) all
-make install
+make -j$(nproc) all prefix=/usr
+make install prefix=/usr
 cd ../
 
 echo "Building freac..."
@@ -68,4 +68,14 @@ git clone --depth 1 "$REPO" ./freac
 echo "$VERSION" > ~/version
 
 cd ./freac
-make -j$(nproc) install
+make -j$(nproc) prefix=/usr install
+cd ../
+
+echo "Verifying library resolution..."
+echo "---------------------------------------------------------------"
+ldd /usr/bin/freac > /tmp/freac.ldd
+if grep -q "not found" /tmp/freac.ldd; then
+    echo "ERROR: unresolved libraries:"
+    grep "not found" /tmp/freac.ldd
+    exit 1
+fi
